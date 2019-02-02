@@ -5,10 +5,8 @@ import android.support.v7.app.AppCompatActivity
 
 import android.support.v4.view.ViewPager
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
 import com.tema.schedule.adapters.SectionPageAdapter
 import com.tema.schedule.fragments.*
-import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,13 +29,21 @@ class MainActivity : AppCompatActivity() {
         val tabLayout: TabLayout = findViewById<TabLayout>(R.id.tabs)
         tabLayout.setupWithViewPager(mViewPager)
 
-        // Detect day of week
-        calendar.time = Date()
-        val simpleDF = SimpleDateFormat("E") //Format: "Mon"
-        val day = simpleDF.format(calendar.time)
+        //set item on start
+        mViewPager.currentItem = when(getDayOfWeek()) {
+            "Tue" -> 1
+            "Wed" -> 2
+            "Thu" -> 3
+            "Fri" -> 4
+            else -> 0
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
 
         //set item on start
-        mViewPager.currentItem = when(day) {
+        mViewPager.currentItem = when(getDayOfWeek()) {
             "Tue" -> 1
             "Wed" -> 2
             "Thu" -> 3
@@ -57,7 +63,13 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
     }
 
+    private fun getDayOfWeek(): String {
+        // Detect day of week
+        calendar.time = Date()
+        val simpleDF = SimpleDateFormat("E") //Format: "Mon"
 
+        return simpleDF.format(calendar.time)
+    }
 
 
 
