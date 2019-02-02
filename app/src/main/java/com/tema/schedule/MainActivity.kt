@@ -30,26 +30,13 @@ class MainActivity : AppCompatActivity() {
         tabLayout.setupWithViewPager(mViewPager)
 
         //set item on start
-        mViewPager.currentItem = when(getDayOfWeek()) {
-            "Tue" -> 1
-            "Wed" -> 2
-            "Thu" -> 3
-            "Fri" -> 4
-            else -> 0
-        }
+        setupDayFragment()
     }
 
     override fun onResume() {
         super.onResume()
-
-        //set item on start
-        mViewPager.currentItem = when(getDayOfWeek()) {
-            "Tue" -> 1
-            "Wed" -> 2
-            "Thu" -> 3
-            "Fri" -> 4
-            else -> 0
-        }
+        //set item on resume
+        setupDayFragment()
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
@@ -63,12 +50,20 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
     }
 
-    private fun getDayOfWeek(): String {
+    private fun setupDayFragment() {
         // Detect day of week
         calendar.time = Date()
         val simpleDF = SimpleDateFormat("E") //Format: "Mon"
+        val day = simpleDF.format(calendar.time)
 
-        return simpleDF.format(calendar.time)
+        //set item on start/resume
+        mViewPager.currentItem = when(day) {
+            "Tue" -> 1
+            "Wed" -> 2
+            "Thu" -> 3
+            "Fri" -> 4
+            else -> 0
+        }
     }
 
 
