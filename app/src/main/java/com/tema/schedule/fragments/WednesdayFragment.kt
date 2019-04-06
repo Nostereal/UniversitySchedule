@@ -40,8 +40,9 @@ class WednesdayFragment : Fragment() {
     }
 
     private fun wednesdayScheduleFill() {
-        wednesdaySchedule.add(mutableListOf("9:00 - 10:30", "МСпорт. Зал", "Элективные курсы по физической культуре и спорту (Практика)", ""))
-        wednesdaySchedule.add(mutableListOf("10:40 - 12:10", "Пр2306", "Информатика (Лекция)", "Рудяк Юрий Владимирович"))
-        wednesdaySchedule.add(mutableListOf("12:20 - 13:50", "Пр2306", "Инновационное материаловедение в информационных системах (Лекция)", "Зеленская Марина Викторовна"))
+        wednesdaySchedule.add(mutableListOf("9:00 - 10:30", "МСпорт. Зал",
+            "Элективные курсы по физической культуре и спорту (Практика)", ""))
+        wednesdaySchedule.add(mutableListOf("10:40 - 12:10", "Пр1426",
+            "Математика (Практика)", "Норин Владимир Павлович"))
     }
 }

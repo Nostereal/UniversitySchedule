@@ -40,13 +40,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
-        val adapter: SectionPageAdapter =
-            SectionPageAdapter(supportFragmentManager)
-        adapter.addFragment(MondayFragment(), "Mon")
-        adapter.addFragment(TuesdayFragment(), "Tue")
-        adapter.addFragment(WednesdayFragment(), "Wed")
-        adapter.addFragment(ThursdayFragment(), "Thu")
-        adapter.addFragment(FridayFragment(), "Fri")
+        val adapter = SectionPageAdapter(supportFragmentManager)
+        with(adapter) {
+            addFragment(MondayFragment(), "Mon")
+            addFragment(TuesdayFragment(), "Tue")
+            addFragment(WednesdayFragment(), "Wed")
+            addFragment(ThursdayFragment(), "Thu")
+            addFragment(FridayFragment(), "Fri")
+        }
         viewPager.adapter = adapter
     }
 
