@@ -40,6 +40,7 @@ class FridayFragment : Fragment() {
     }
 
     private fun fridayScheduleFill() {
+        fridaySchedule.add(mutableListOf("9:00 - 10:30", "Null", "Null", "Null"))
         fridaySchedule.add(mutableListOf("10:40 - 12:10", "Пр2303", "Математика (Лекция)", "Норин Владимир Павлович"))
         fridaySchedule.add(mutableListOf("12:20 - 13:50", "Пр1428\tПр2308",
             "Иностранный язык (Практика)", "Красильникова Любовь Васильевна"))
