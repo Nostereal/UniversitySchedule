@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/app_bar_edit_group"
+        android:title="@string/edit_group"
+        android:visible="false"
+        app:actionViewClass="com.google.android.material.textfield.TextInputEditText"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_curr_group"
+        android:title="@string/curr_group"
+        app:labelVisibilityMode="labeled"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_group_search"
+        android:icon="@drawable/ic_search_black"
+        android:title="@string/action_group_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_settings"
+        android:icon="@drawable/ic_settings_black"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
 
 </menu>

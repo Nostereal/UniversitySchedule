@@ -6,25 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <fragment
-        android:id="@+id/viewpager_fragment"
-        android:name="com.nostereal.universityschedule.fragments.ViewPagerFragment"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10" />
-
-    <fragment
-        android:id="@+id/bottom_bar_fragment"
-        android:name="com.nostereal.universityschedule.fragments.BottomBarFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-    <!--    <androidx.viewpager2.widget.ViewPager2-->
-    <!--        android:id="@+id/viewPager"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:scrollbars="horizontal" />-->
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal" />
 
     <!--        <com.google.android.material.bottomappbar.BottomAppBar-->
     <!--            android:id="@+id/bottom_app_bar"-->

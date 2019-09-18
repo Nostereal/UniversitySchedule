@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/current_group"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="@color/absolute_white"
+        android:text="@string/curr_group"
+        android:textAlignment="center"
+        android:textSize="@dimen/group_text_size" />
+
+    <ImageButton
+        android:id="@+id/setting_btn"
+        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:src="@drawable/ic_settings_black"
+        android:contentDescription="@string/settings_btn_description" />
+
+</RelativeLayout>
