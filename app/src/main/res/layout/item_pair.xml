@@ -5,17 +5,17 @@
     android:id="@+id/pair_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginTop="8dp"
-    app:cardCornerRadius="8dp">
+    android:layout_marginStart="@dimen/small_margin"
+    android:layout_marginEnd="@dimen/small_margin"
+    android:layout_marginBottom="@dimen/small_margin"
+    app:cardCornerRadius="@dimen/corner_radius">
 
     <TextView
         android:id="@+id/textView"
-        tools:text="Test text"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:gravity="center"
         android:textSize="32sp"
-        android:layout_width="match_parent"
-        android:layout_height="120dp" />
+        tools:text="Test text" />
 
 </androidx.cardview.widget.CardView>

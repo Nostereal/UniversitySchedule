@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/schedule_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -12,27 +13,14 @@
         android:name="com.nostereal.universityschedule.fragments.ViewPagerFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10" />
+        android:layout_weight="11" />
 
     <fragment
         android:id="@+id/bottom_bar_fragment"
         android:name="com.nostereal.universityschedule.fragments.BottomBarFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_gravity="bottom"
         android:layout_weight="1" />
-    <!--    <androidx.viewpager2.widget.ViewPager2-->
-    <!--        android:id="@+id/viewPager"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:scrollbars="horizontal" />-->
-
-    <!--        <com.google.android.material.bottomappbar.BottomAppBar-->
-    <!--            android:id="@+id/bottom_app_bar"-->
-    <!--            android:visibility="gone"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_gravity="bottom"-->
-    <!--            android:backgroundTint="@color/colorPrimary"-->
-    <!--            app:menu="@menu/bottomappbar_menu"/>-->
 
 </LinearLayout>

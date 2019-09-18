@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">University Schedule</string>
-    
-<!--bottom app bar items-->
+
+    <!--bottom app bar items-->
     <string name="action_group_search">Group search</string>
     <string name="action_settings">Settings</string>
     <string name="edit_group">Edit group</string>
     <string name="curr_group">181-721</string>
     <string name="settings_btn_description">Open settings</string>
+    <string name="group_search_hint">Search for group…</string>
 </resources>

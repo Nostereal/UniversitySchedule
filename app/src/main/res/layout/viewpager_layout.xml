@@ -6,19 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="horizontal" />
-
-    <!--        <com.google.android.material.bottomappbar.BottomAppBar-->
-    <!--            android:id="@+id/bottom_app_bar"-->
-    <!--            android:visibility="gone"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_gravity="bottom"-->
-    <!--            android:backgroundTint="@color/colorPrimary"-->
-    <!--            app:menu="@menu/bottomappbar_menu"/>-->
 
 </LinearLayout>

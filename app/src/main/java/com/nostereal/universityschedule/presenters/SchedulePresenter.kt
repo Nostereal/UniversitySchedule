@@ -1,5 +1,5 @@
 package com.nostereal.universityschedule.presenters
 
-interface BasePresenter {
-    fun onDestroy()
+interface SchedulePresenter {
+
 }
