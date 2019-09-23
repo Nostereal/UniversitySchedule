@@ -5,10 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextWatcher
+import android.util.EventLog
 import android.view.InputEvent
+import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
 import com.nostereal.universityschedule.R
@@ -17,6 +22,9 @@ import com.nostereal.universityschedule.views.ScheduleView
 import kotlinx.android.synthetic.main.activity_schedule.*
 import kotlinx.android.synthetic.main.bottom_bar.*
 import kotlinx.android.synthetic.main.viewpager_layout.*
+import kotlinx.coroutines.*
+import java.security.Key
+import kotlin.coroutines.CoroutineContext
 
 class ScheduleActivity : AppCompatActivity(), ScheduleView {
     override fun showError(errorText: String) {
@@ -78,5 +86,36 @@ class ScheduleActivity : AppCompatActivity(), ScheduleView {
         }
 
         // TODO: handle keyboard events
+        group_search_edit_text.setOnEditorActionListener { _, actionId, _ ->
+            var handled: Boolean = false
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                TODO("perform request to rasp.dmami.ru")
+                handled = true
+            }
+            handled
+        }
+
+        /*
+        group_search_edit_text.addTextChangedListener(object : TextWatcher {
+            var lastTextChangeMillis: Long = 0
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s?.length ?: 0 > 6) {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        TODO("check if last char was written N millis ago")
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // nothing to do
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // nothing to do
+            }
+
+        })
+        */
     }
 }

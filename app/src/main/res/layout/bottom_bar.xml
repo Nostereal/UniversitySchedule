@@ -15,6 +15,8 @@
         android:textAlignment="center"
         android:textColor="@color/absolute_white"
         android:textSize="@dimen/group_text_size"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:visibility="visible" />
 
     <EditText
