@@ -4,29 +4,25 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.EventLog
-import android.view.InputEvent
-import android.view.KeyEvent
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
 import com.nostereal.universityschedule.R
 import com.nostereal.universityschedule.adapters.ScheduleViewPagerAdapter
+import com.nostereal.universityschedule.network.Result
+import com.nostereal.universityschedule.network.ScheduleApi
+import com.nostereal.universityschedule.network.ScheduleService
 import com.nostereal.universityschedule.views.ScheduleView
 import kotlinx.android.synthetic.main.activity_schedule.*
 import kotlinx.android.synthetic.main.bottom_bar.*
 import kotlinx.android.synthetic.main.viewpager_layout.*
 import kotlinx.coroutines.*
-import java.security.Key
-import kotlin.coroutines.CoroutineContext
 
 class ScheduleActivity : AppCompatActivity(), ScheduleView {
+    private lateinit var job: Job
+
     override fun showError(errorText: String) {
         Snackbar.make(schedule_activity, "Error: $errorText", Snackbar.LENGTH_LONG)
     }
@@ -117,5 +113,24 @@ class ScheduleActivity : AppCompatActivity(), ScheduleView {
 
         })
         */
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val retrofit = ScheduleService.create()
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val result = ScheduleApi(retrofit).getSchedule("181-722")
+
+            launch(Dispatchers.Main) {
+                if (result is Result.Success) {
+//                    Toast.makeText(applicationContext, result.data.group.groupName, Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job.cancel()
     }
 }
