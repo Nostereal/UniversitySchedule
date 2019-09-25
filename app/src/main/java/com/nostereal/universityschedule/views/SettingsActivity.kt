@@ -1,4 +1,4 @@
-package com.nostereal.universityschedule.activities
+package com.nostereal.universityschedule.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

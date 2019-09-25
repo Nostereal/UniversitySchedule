@@ -1,8 +1,7 @@
 package com.nostereal.universityschedule.network
 
-import kotlinx.coroutines.CoroutineScope
+import com.nostereal.universityschedule.models.ScheduleResponse
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
 class ScheduleApi(private val scheduleService: ScheduleService) {
