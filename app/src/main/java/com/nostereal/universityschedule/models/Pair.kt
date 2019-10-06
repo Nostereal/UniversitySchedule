@@ -13,7 +13,7 @@ data class Pair (
     val dateTo: String,
     val auditories: ArrayList<Auditory>,
     val type: String,
-    val week: String,
+//    val week: String,
     @SerializedName("first_module")
     val isFirstModule: Boolean,
     @SerializedName("second_module")

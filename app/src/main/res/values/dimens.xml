@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="group_text_size">20sp</dimen>
+    <dimen name="pair_el_text_size">14sp</dimen>
+
     <dimen name="medium_margin">24dp</dimen>
     <dimen name="normal_margin">14dp</dimen>
     <dimen name="small_margin">10dp</dimen>

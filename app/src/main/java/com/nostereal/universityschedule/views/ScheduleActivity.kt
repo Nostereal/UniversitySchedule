@@ -13,6 +13,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.nostereal.universityschedule.R
 import com.nostereal.universityschedule.adapters.ScheduleViewPagerAdapter
 import com.nostereal.universityschedule.contracts.ScheduleContract
+import com.nostereal.universityschedule.extensions.hideKeyboard
+import com.nostereal.universityschedule.extensions.showKeyboard
+import com.nostereal.universityschedule.models.ScheduleResponse
 import com.nostereal.universityschedule.presenters.SchedulePresenter
 import kotlinx.android.synthetic.main.activity_schedule.*
 import kotlinx.android.synthetic.main.bottom_bar.*
@@ -36,19 +39,6 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
     override fun onStart() {
         super.onStart()
 
-        // just for tests
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = presenter?.getSchedule("181-721")
-
-            if (response == null) {
-                launch(Dispatchers.Main) { showError("Response is null :(") }
-                return@launch
-            }
-
-            withContext(Dispatchers.Main) {
-                Toast.makeText(applicationContext, response.group.groupName, Toast.LENGTH_LONG).show()
-            }
-        }
     }
 
     /* ——— Interface's functions ——— */
@@ -56,8 +46,9 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
         Snackbar.make(schedule_activity, "Error: $errorText", Snackbar.LENGTH_LONG).show()
     }
 
-    override fun showSchedule() {
-        TODO()
+    override fun showSchedule(schedule: ScheduleResponse) {
+        Toast.makeText(this, schedule.group.groupName, Toast.LENGTH_SHORT).show()
+        TODO("implement showSchedule()")
     }
 
     override fun openSettings() {
@@ -82,34 +73,12 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
         group_search_edit_text.setOnEditorActionListener { _, actionId, _ ->
             var handled: Boolean = false
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                TODO("perform request to rasp.dmami.ru")
+                presenter?.loadSchedule(group_search_edit_text.text.toString()/*, isSession */)
+                this.hideKeyboard()
                 handled = true
             }
             handled
         }
-
-        /*
-        group_search_edit_text.addTextChangedListener(object : TextWatcher {
-            var lastTextChangeMillis: Long = 0
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s?.length ?: 0 > 6) {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        TODO("check if last char was written N millis ago")
-                    }
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                // nothing to do
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // nothing to do
-            }
-
-        })
-        */
     }
 
     override fun openGroupSearchLabel() {
@@ -118,10 +87,8 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
         group_search_edit_text.setText(current_group.text)
         group_search_edit_text.visibility = View.VISIBLE
         group_search_edit_text.requestFocus()
-        // open keyboard
-        val imm: InputMethodManager =
-            getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(group_search_edit_text, InputMethodManager.SHOW_IMPLICIT)
+
+        this.showKeyboard()
     }
 
     override fun closeGroupSearchLabel() {
@@ -131,11 +98,12 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
         current_group.visibility = View.VISIBLE
     }
 
+    // TODO: implement loadings
     override fun startLoading() {
-        TODO()
+        Log.d("M_ScheduleActivity", "Loading started")
     }
 
     override fun endLoading() {
-        TODO()
+        Log.d("M_ScheduleActivity", "Loading ended")
     }
 }

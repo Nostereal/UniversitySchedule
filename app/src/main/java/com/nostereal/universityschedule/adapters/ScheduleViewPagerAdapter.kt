@@ -6,16 +6,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.nostereal.universityschedule.fragments.BaseViewPagerFragment
 
-class ScheduleViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-    private val list = listOf<String>("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday")
-    private val schedule = listOf(
-        arrayListOf("0, 0", "0, 1", "0, 2"),
-        arrayListOf("1, 0", "1, 1"),
-        arrayListOf("2, 0", "2, 1", "2, 2", "2, 3"),
-        arrayListOf("3, 0"),
-        arrayListOf("4, 0", "4, 1", "4, 2"),
-        arrayListOf("5, 0", "5, 1", "5, 2")
-    )
+class ScheduleViewPagerAdapter(fm: FragmentManager) :
+    FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
+    private val list = listOf<String>("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 
     override fun getItem(position: Int): Fragment {
         val frag = BaseViewPagerFragment()

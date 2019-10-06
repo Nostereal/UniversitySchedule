@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/day_name_vp1"
+        android:id="@+id/tv_day_name_vp1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -14,10 +14,10 @@
         tools:text="Current day" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pairs_rv_vp1"
+        android:id="@+id/rv_pairs_vp1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/day_name_vp1"
+        android:layout_below="@id/tv_day_name_vp1"
         tools:listitem="@layout/item_pair" />
 
 </RelativeLayout>

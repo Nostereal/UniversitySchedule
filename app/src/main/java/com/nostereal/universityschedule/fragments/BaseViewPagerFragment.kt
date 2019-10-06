@@ -8,18 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nostereal.universityschedule.R
 import com.nostereal.universityschedule.adapters.DayAdapter
-import com.nostereal.universityschedule.adapters.ScheduleAdapter
+import com.nostereal.universityschedule.models.Day
 import kotlinx.android.synthetic.main.viewpager_fragment_layout.*
 
 class BaseViewPagerFragment : Fragment() {
-    private val schedule = listOf(
-        arrayListOf("0, 0", "0, 1", "0, 2"),
-        arrayListOf("1, 0", "1, 1"),
-        arrayListOf("2, 0", "2, 1", "2, 2", "2, 3"),
-        arrayListOf("3, 0"),
-        arrayListOf("4, 0", "4, 1", "4, 2"),
-        arrayListOf("5, 0", "5, 1", "5, 2")
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,14 +26,12 @@ class BaseViewPagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        day_name_vp1.text = arguments?.getString("day") ?: "OOps, null values :("
+        tv_day_name_vp1.text = arguments?.getString("day") ?: "OOps, null values in fragment args :("
 
         val dayAdapter = DayAdapter()
         val currDayId = arguments!!.getInt("dayId")
-        dayAdapter.updateSchedule(schedule[currDayId])
 
-        pairs_rv_vp1.adapter = dayAdapter
-        pairs_rv_vp1.layoutManager = LinearLayoutManager(view.context)
-
+        rv_pairs_vp1.adapter = dayAdapter
+        rv_pairs_vp1.layoutManager = LinearLayoutManager(view.context)
     }
 }

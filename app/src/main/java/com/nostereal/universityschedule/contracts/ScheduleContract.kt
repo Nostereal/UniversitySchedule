@@ -9,7 +9,7 @@ interface ScheduleContract {
     interface View {
         fun initView()
         fun showError(errorText: String)
-        fun showSchedule()
+        fun showSchedule(schedule: ScheduleResponse)
         fun openSettings()
         fun openGroupSearchLabel()
         fun closeGroupSearchLabel()
@@ -18,7 +18,7 @@ interface ScheduleContract {
     }
 
     interface Presenter {
-        suspend fun getSchedule(groupName: String, isSession: Boolean = false): ScheduleResponse?
+        fun loadSchedule(groupName: String, isSession: Boolean = false)
     }
 
     interface Model {

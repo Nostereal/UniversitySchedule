@@ -10,12 +10,10 @@
     android:layout_marginBottom="@dimen/small_margin"
     app:cardCornerRadius="@dimen/corner_radius">
 
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_pairs"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:gravity="center"
-        android:textSize="32sp"
-        tools:text="Test text" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_pairs_per_one_time" />
 
 </androidx.cardview.widget.CardView>
