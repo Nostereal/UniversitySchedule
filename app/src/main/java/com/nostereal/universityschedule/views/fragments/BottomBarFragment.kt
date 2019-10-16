@@ -1,4 +1,4 @@
-package com.nostereal.universityschedule.fragments
+package com.nostereal.universityschedule.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.nostereal.universityschedule.models
+package com.nostereal.universityschedule.data
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,7 +11,9 @@ data class Pair (
     val dateFrom: String,
     @SerializedName("date_to")
     val dateTo: String,
+    @SerializedName("auditories")
     val auditories: ArrayList<Auditory>,
+    @SerializedName("type")
     val type: String,
 //    val week: String,
     @SerializedName("first_module")

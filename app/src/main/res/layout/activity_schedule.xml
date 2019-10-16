@@ -10,14 +10,14 @@
 
     <fragment
         android:id="@+id/viewpager_fragment"
-        android:name="com.nostereal.universityschedule.fragments.ViewPagerFragment"
+        android:name="com.nostereal.universityschedule.views.fragments.ViewPagerFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="11" />
 
     <fragment
         android:id="@+id/bottom_bar_fragment"
-        android:name="com.nostereal.universityschedule.fragments.BottomBarFragment"
+        android:name="com.nostereal.universityschedule.views.fragments.BottomBarFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom"

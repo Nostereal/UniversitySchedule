@@ -1,8 +1,8 @@
 package com.nostereal.universityschedule.contracts
 
-import com.nostereal.universityschedule.models.ScheduleResponse
+import android.content.Context
+import com.nostereal.universityschedule.data.ScheduleResponse
 import com.nostereal.universityschedule.network.Result
-import kotlinx.coroutines.Deferred
 
 interface ScheduleContract {
 
@@ -15,13 +15,15 @@ interface ScheduleContract {
         fun closeGroupSearchLabel()
         fun startLoading()
         fun endLoading()
+        val context: Context
     }
 
     interface Presenter {
         fun loadSchedule(groupName: String, isSession: Boolean = false)
+        fun onDestroy()
     }
 
     interface Model {
-        fun getScheduleAsync(groupName: String, isSession: Boolean = false): Deferred<Result<ScheduleResponse>>
+        suspend fun getScheduleAsync(context: Context, groupName: String, isSession: Boolean = false): Result<ScheduleResponse>
     }
 }

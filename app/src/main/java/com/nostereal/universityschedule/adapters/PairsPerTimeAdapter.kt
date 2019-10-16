@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nostereal.universityschedule.R
-import com.nostereal.universityschedule.models.Pair
+import com.nostereal.universityschedule.data.Pair
 
 class PairsPerTimeAdapter : RecyclerView.Adapter<PairsPerTimeAdapter.ViewHolder>() {
 

@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nostereal.universityschedule.DiffUtilCallback
+import com.nostereal.universityschedule.utils.DayDiffUtilCallback
 import com.nostereal.universityschedule.R
-import com.nostereal.universityschedule.models.Day
-import com.nostereal.universityschedule.models.Pair
+import com.nostereal.universityschedule.data.Day
+import com.nostereal.universityschedule.data.Pair
 import kotlinx.android.synthetic.main.item_pair.view.*
 
 class DayAdapter : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
@@ -63,7 +63,8 @@ class DayAdapter : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
     }
 
     fun updateSchedule(newSchedule: ArrayList<Day>) {
-        val diffUtilCallback = DiffUtilCallback(scheduleList, newSchedule)
+        val diffUtilCallback =
+            DayDiffUtilCallback(scheduleList, newSchedule)
         val diffResult = DiffUtil.calculateDiff(diffUtilCallback)
 
         scheduleList = mutableListOf<Day>().apply { addAll(newSchedule) }

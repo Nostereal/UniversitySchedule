@@ -1,9 +1,9 @@
-package com.nostereal.universityschedule
+package com.nostereal.universityschedule.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.nostereal.universityschedule.models.Day
+import com.nostereal.universityschedule.data.Day
 
-class DiffUtilCallback(
+class DayDiffUtilCallback(
     private val oldList: List<Day>,
     private val newList: List<Day>
 ) : DiffUtil.Callback() {

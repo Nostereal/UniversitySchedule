@@ -1,4 +1,4 @@
-package com.nostereal.universityschedule.extensions
+package com.nostereal.universityschedule.utils.extensions
 
 import android.app.Activity
 import android.content.Context

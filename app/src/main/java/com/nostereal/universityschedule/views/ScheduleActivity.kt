@@ -7,23 +7,19 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.nostereal.universityschedule.R
 import com.nostereal.universityschedule.adapters.ScheduleViewPagerAdapter
 import com.nostereal.universityschedule.contracts.ScheduleContract
-import com.nostereal.universityschedule.extensions.hideKeyboard
-import com.nostereal.universityschedule.extensions.showKeyboard
-import com.nostereal.universityschedule.models.ScheduleResponse
+import com.nostereal.universityschedule.utils.extensions.hideKeyboard
+import com.nostereal.universityschedule.utils.extensions.showKeyboard
+import com.nostereal.universityschedule.data.ScheduleResponse
 import com.nostereal.universityschedule.presenters.SchedulePresenter
+import com.nostereal.universityschedule.utils.DispatcherProvider
 import kotlinx.android.synthetic.main.activity_schedule.*
 import kotlinx.android.synthetic.main.bottom_bar.*
 import kotlinx.android.synthetic.main.viewpager_layout.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
 
@@ -33,15 +29,15 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
 
-        presenter = SchedulePresenter(this)
+        presenter = SchedulePresenter(this, DispatcherProvider)
     }
 
-    override fun onStart() {
-        super.onStart()
-
+    override fun onDestroy() {
+        super.onDestroy()
+        // TODO: should I set recyclerview's adapters to null to avoid memory leaks???
     }
 
-    /* ——— Interface's functions ——— */
+    /* ——— Interface's implementation ——— */
     override fun showError(errorText: String) {
         Snackbar.make(schedule_activity, "Error: $errorText", Snackbar.LENGTH_LONG).show()
     }
@@ -49,14 +45,16 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
     override fun showSchedule(schedule: ScheduleResponse) {
         Toast.makeText(this, schedule.group.groupName, Toast.LENGTH_SHORT).show()
         TODO("implement showSchedule()")
+        // TODO: pass data to adapter
     }
 
     override fun openSettings() {
-        val intent = Intent(applicationContext, SettingsActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(applicationContext, SettingsActivity::class.java))
     }
 
     override fun initView() {
+
+        Log.d("M_ScheduleActivity", "${applicationContext.cacheDir}")
         viewPager1.adapter = ScheduleViewPagerAdapter(supportFragmentManager)
 
         setting_btn.setOnClickListener { openSettings() }
@@ -71,7 +69,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
 
         // TODO: handle keyboard events
         group_search_edit_text.setOnEditorActionListener { _, actionId, _ ->
-            var handled: Boolean = false
+            var handled = false
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 presenter?.loadSchedule(group_search_edit_text.text.toString()/*, isSession */)
                 this.hideKeyboard()
@@ -106,4 +104,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
     override fun endLoading() {
         Log.d("M_ScheduleActivity", "Loading ended")
     }
+
+    override val context: Context
+        get() = applicationContext
 }

@@ -9,7 +9,7 @@ import com.nostereal.universityschedule.R
 import kotlinx.android.synthetic.main.day_item.view.*
 
 class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
-    private val list = listOf<String>("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday")
+    private val list = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday")
     private lateinit var dayAdapter: DayAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {

@@ -1,4 +1,4 @@
-package com.nostereal.universityschedule.models
+package com.nostereal.universityschedule.data
 
 import com.google.gson.annotations.SerializedName
 

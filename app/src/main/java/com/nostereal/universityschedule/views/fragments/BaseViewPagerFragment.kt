@@ -1,4 +1,4 @@
-package com.nostereal.universityschedule.fragments
+package com.nostereal.universityschedule.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nostereal.universityschedule.R
 import com.nostereal.universityschedule.adapters.DayAdapter
-import com.nostereal.universityschedule.models.Day
 import kotlinx.android.synthetic.main.viewpager_fragment_layout.*
 
 class BaseViewPagerFragment : Fragment() {
@@ -27,6 +26,8 @@ class BaseViewPagerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tv_day_name_vp1.text = arguments?.getString("day") ?: "OOps, null values in fragment args :("
+
+        // TODO: Are not here should we show schedule?
 
         val dayAdapter = DayAdapter()
         val currDayId = arguments!!.getInt("dayId")
