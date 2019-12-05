@@ -2,7 +2,6 @@ package com.nostereal.universityschedule.network
 
 import android.content.Context
 import android.util.Log
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.nostereal.universityschedule.data.ScheduleResponse
 import com.nostereal.universityschedule.utils.extensions.isNetworkAvailable
 import okhttp3.Cache

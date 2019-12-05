@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.viewpager_layout.*
 
 class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
 
-    private var presenter: SchedulePresenter? = null
+    private lateinit var presenter: SchedulePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
     override fun initView() {
 
         Log.d("M_ScheduleActivity", "${applicationContext.cacheDir}")
-        viewPager1.adapter = ScheduleViewPagerAdapter(supportFragmentManager)
+        schedule_view_pager.adapter = ScheduleViewPagerAdapter(supportFragmentManager)
 
         setting_btn.setOnClickListener { openSettings() }
 
@@ -71,7 +71,7 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
         group_search_edit_text.setOnEditorActionListener { _, actionId, _ ->
             var handled = false
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                presenter?.loadSchedule(group_search_edit_text.text.toString()/*, isSession */)
+                presenter.loadSchedule(group_search_edit_text.text.toString()/*, isSession */)
                 this.hideKeyboard()
                 handled = true
             }
@@ -82,9 +82,11 @@ class ScheduleActivity : AppCompatActivity(), ScheduleContract.View {
     override fun openGroupSearchLabel() {
         current_group.visibility = View.GONE
 
-        group_search_edit_text.setText(current_group.text)
-        group_search_edit_text.visibility = View.VISIBLE
-        group_search_edit_text.requestFocus()
+        group_search_edit_text.apply {
+            setText(current_group.text)
+            visibility = View.VISIBLE
+            requestFocus()
+        }
 
         this.showKeyboard()
     }

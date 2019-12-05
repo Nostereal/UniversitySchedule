@@ -6,20 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nostereal.universityschedule.R
+import com.nostereal.universityschedule.data.ScheduleResponse
 import kotlinx.android.synthetic.main.day_item.view.*
 
 class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
-    private val list = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday")
+    private val daysList = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday")
     private lateinit var dayAdapter: DayAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         return ScheduleViewHolder(parent)
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = daysList.size
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(daysList[position])
         dayAdapter = DayAdapter()
         holder.initChildRecyclerView(dayAdapter)
     }
@@ -40,4 +41,7 @@ class ScheduleAdapter : RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>
         }
     }
 
+    fun setDaysItems(data: ScheduleResponse) {
+
+    }
 }

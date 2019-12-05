@@ -6,12 +6,18 @@ import com.nostereal.universityschedule.network.ScheduleService
 import com.nostereal.universityschedule.utils.extensions.isNetworkAvailable
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
+import org.mockito.junit.MockitoJUnitRunner
 import java.io.File
 
+@RunWith(MockitoJUnitRunner::class)
 class NetworkingTest {
-    private val context = mock(Context::class.java)
+//    private val context = mock(Context::class.java)
+    @Mock
+    private lateinit var context: Context
     private val cacheDir = File("/data/user/0/com.nostereal.universityschedule/cache")
 
     @Test
@@ -27,7 +33,7 @@ class NetworkingTest {
     }
 
     @Test
-    fun responseStatusIsOKWhenNetwokAvailable() = runBlocking<Unit> {
+    fun responseStatusIsOKWhenNetworkAvailable() = runBlocking<Unit> {
         `when`(context.isNetworkAvailable).thenReturn(true)
         `when`(context.cacheDir).thenReturn(cacheDir)
 

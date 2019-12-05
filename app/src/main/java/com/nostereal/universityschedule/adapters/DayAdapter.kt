@@ -42,7 +42,16 @@ class DayAdapter : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
         }
 
         private fun splitDayToPairs(day: Day): List<ArrayList<Pair>> {
-            val (firstPair, secondPair, thirdPair, fourthPair, fifthPair, sixthPair, seventhPair) = day
+            val (
+                firstPair,
+                secondPair,
+                thirdPair,
+                fourthPair,
+                fifthPair,
+                sixthPair,
+                seventhPair
+            ) = day
+
             return mutableListOf(
                 firstPair,
                 secondPair,
